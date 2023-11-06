@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <div id="app">
+        {{ text }} {{ text1 }}
+    </div>
+    <script>
+        const vm = Vue.createApp({
+            data() {
+                return {
+                    text: "Hola vue",
+                    text1: "Texto 1"
+                };   
+            }
+        }).mount("#app");
+
+        console.log(vm);
+
+        // Puedo luego manipular vm para cambiar el valor la varibale text o text1
+    </script>
+</body>
+</html>
