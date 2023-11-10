@@ -15,18 +15,16 @@
         const vm = Vue.createApp({
             data() {
                 return {
-                    text: "Hola Vue",
+                    counter: 0
                 };   
             },
             methods: {
-
+                increment(){
+                    console.log("click!");
+                    this.counter++;
+                }
             },
-            template: `
-                <p>{{ text }}</p>
-                <input type="text" 
-                v-model="text"
-                />
-            `
+            template: `<form><button v-on:keyup="increment">{{ counter }}</button></form>`
         }).mount("#app");
         // directivas:
         // v-text="" para ingresar solo texto siempre empiezna con (v)
@@ -35,12 +33,6 @@
         //doble llave {{ text }}
         // v-bind:src o shorcut : <img :src="img" :alt="alt">
         // envento click <button v-on:click="increment">{{ counter }}</button>
-        // evento change  <input type="text" v-on:change="methot_input"/>
-        // evento input <input type="text" v-on:input="methot_input"/> para coger cada pulsación
-        // Abreviasiones:
-        // Eventos -> v-on -> @
-        // Atributos -> v-bind -> :
-        // v-model hace lo de index_v5 con menos codigo
         console.log(vm);
 
         // Puedo luego manipular vm para cambiar el valor la varibale text o text1

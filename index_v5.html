@@ -19,12 +19,16 @@
                 };   
             },
             methods: {
-
+                methot_input(e){
+                    //console.log(e.target.value);
+                    this.text = e.target.value;
+                }
             },
             template: `
                 <p>{{ text }}</p>
                 <input type="text" 
-                v-model="text"
+                @:input="methot_input"
+                :value="text"
                 />
             `
         }).mount("#app");
@@ -40,7 +44,6 @@
         // Abreviasiones:
         // Eventos -> v-on -> @
         // Atributos -> v-bind -> :
-        // v-model hace lo de index_v5 con menos codigo
         console.log(vm);
 
         // Puedo luego manipular vm para cambiar el valor la varibale text o text1
