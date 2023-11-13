@@ -15,8 +15,7 @@
         const vm = Vue.createApp({
             data() {
                 return {
-                    text: "Puerta Cerrada",
-                    open: false
+                    text: "Hola Vue"
                 };   
             },
             methods: {
@@ -24,19 +23,12 @@
             computed:{
             },
             watch:{ // Regla el mismo nombre de la variable que tienes que escuchar
-                open(value){
-                    console.log("Watcher!", value, this.text);
-                    if(value){
-                        this.text = "Puerta esta Abierta";
-                    }else{
-                        this.text = "Puerta esta Cerrada";
-                    }
-
+                text(value,old){
+                    console.log("Watcher!", value, old, this.text);
                 }
             },
             template: `
-                <div>{{ text }}</div>
-                <button @click="open = !open"> {{ open ? "Cerrar" : "Abrir" }} </button>
+                {{ text }}
             `
         }).mount("#app");
         // directivas:

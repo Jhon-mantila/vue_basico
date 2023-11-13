@@ -15,28 +15,17 @@
         const vm = Vue.createApp({
             data() {
                 return {
-                    text: "Puerta Cerrada",
-                    open: false
+                    text: "Hola Vue",
                 };   
             },
             methods: {
-            },
-            computed:{
-            },
-            watch:{ // Regla el mismo nombre de la variable que tienes que escuchar
-                open(value){
-                    console.log("Watcher!", value, this.text);
-                    if(value){
-                        this.text = "Puerta esta Abierta";
-                    }else{
-                        this.text = "Puerta esta Cerrada";
-                    }
 
-                }
             },
             template: `
-                <div>{{ text }}</div>
-                <button @click="open = !open"> {{ open ? "Cerrar" : "Abrir" }} </button>
+                <p>{{ text }}</p>
+                <input type="text" 
+                v-model="text"
+                />
             `
         }).mount("#app");
         // directivas:
@@ -52,10 +41,6 @@
         // Eventos -> v-on -> @
         // Atributos -> v-bind -> :
         // v-model hace lo de index_v5 con menos codigo
-        // toLocaleDateString() este metodo formatea la fecha a su local
-        // methods == Logica de eventos (Logica en general)
-        // computed == Logica de data en general (Tiene propiedad reactiva es decir se refresca con los cambios de las variables)
-
         console.log(vm);
         // Puedo luego manipular vm para cambiar el valor la varibale text o text1
     </script>

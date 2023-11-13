@@ -15,28 +15,25 @@
         const vm = Vue.createApp({
             data() {
                 return {
-                    text: "Puerta Cerrada",
-                    open: false
+                    firstName: "Jhon",
+                    lastName: "Mantilla",
+                    now: new Date()
                 };   
             },
             methods: {
+
             },
             computed:{
-            },
-            watch:{ // Regla el mismo nombre de la variable que tienes que escuchar
-                open(value){
-                    console.log("Watcher!", value, this.text);
-                    if(value){
-                        this.text = "Puerta esta Abierta";
-                    }else{
-                        this.text = "Puerta esta Cerrada";
-                    }
-
+                fullName(){
+                    return this.firstName + " " + this.lastName;
+                },
+                today(){
+                    return this.now.toLocaleDateString();
                 }
             },
             template: `
-                <div>{{ text }}</div>
-                <button @click="open = !open"> {{ open ? "Cerrar" : "Abrir" }} </button>
+                <div>{{ fullName }}</div>
+                <div>{{ today }}</div>
             `
         }).mount("#app");
         // directivas:
