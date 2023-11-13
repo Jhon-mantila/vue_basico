@@ -45,7 +45,9 @@
                 return {
                     text: "Puerta Cerrada",
                     open: false,
-
+                    style: {
+                        backgroundColor: "#e5e5e5"
+                    }
                 };   
             },
             methods: {
@@ -53,9 +55,6 @@
             computed:{ //Dentro de las funciones computadas si deben utilizar this.
                 fnLabel(){
                     return this.open ? "Cerrar" : "Abrir";
-                },
-                style(){
-                    return this.open ? 'open': 'closed' ;
                 }
             },
             watch:{ // Regla el mismo nombre de la variable que tienes que escuchar
@@ -63,16 +62,16 @@
                     console.log("Watcher!", value, this.text);
                     if(value){
                         this.text = "Puerta esta Abierta";
-                        
+                        this.style.backgroundColor = "#b5e7a0";
                     }else{
                         this.text = "Puerta esta Cerrada";
-                    
+                        this.style.backgroundColor = "#eca1a6";
                     }
 
                 }
             },
             template: `
-            <div class= "container" :class=[style]>
+            <div class= "container" :style="style">
                 <h2>{{ text }}</h2>
                 <button @click="open = !open"> {{ fnLabel }} </button>
             </div>    
