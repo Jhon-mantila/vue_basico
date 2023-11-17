@@ -52,7 +52,7 @@
         
     </div>
     <script>
-        const app = Vue.createApp({
+        const vm = Vue.createApp({
             data() {
                 return {
                     text: "Accede a tu Cuenta",
@@ -80,6 +80,10 @@
                         description: this.description
                     }
                     this.posts.push(obj);
+                },
+
+                deletePost(index){
+                    this.posts.splice(index,1);
                 }
             },
             computed:{ //Dentro de las funciones computadas si deben utilizar this.
@@ -121,10 +125,11 @@
                         <input type="submit" />
                         </form>
                         <div class="list">
-                            <item v-for="(item, i) in posts" :key="i" 
-                            :post="item" 
-                            :posts="posts"
-                            />
+                            <div v-for="(item, i) in posts" :key="i" class="item">
+                                <div class="title">{{ item.title }}</div>
+                                <p>{{ item.description }}</p>
+                                <button @click="deletePost(i)">Quitar Posts</button>
+                            </div>
                         </div>    
                     </div> 
                     <div v-else>
@@ -137,27 +142,7 @@
                 </button>
             </div>    
             `
-        })
-        //Separar por componentes una aplicacion en vue
-        // ademas se le pueden agregar sus propios metodos, sus propiedades computadas y sus respectivos watches
-        app.component ("item",{
-            props: ["post", "posts"],
-            methods: {
-                deletePost(index){
-                    this.posts.splice(index,1);
-                }
-            },
-            template: ` 
-                <div class="item">
-                    <div class="title">{{ post.title }}</div>
-                    <p>{{ post.description }}</p>
-                    <button @click="deletePost(i)">Quitar Posts</button>
-                 </div>
-            `
-        });
-
-        const vm = app.mount("#app");
-
+        }).mount("#app");
         // directivas:
         // v-text="" para ingresar solo texto siempre empiezna con (v)
         // v-once no deja cambiar el texto
