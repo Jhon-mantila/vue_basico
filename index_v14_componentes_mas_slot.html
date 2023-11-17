@@ -28,15 +28,10 @@
             },
             template: `
                 <div>
-                    <v-layout>
-                        <template v-slot:header>
-                            <button>Btn</button>
-                        </template>    
-                        <template v-slot:contenido>
-                            Probando el contenido....
-                        </template> 
-                    </v-layout>
-                    
+                    <v-header>
+                        <button>Btn</button>
+                    </v-header>
+                    <div>Lorem ispum ....</div>
                 </div>
             `
         });
@@ -44,16 +39,12 @@
         //Ademas se le pueden agregar sus propios metodos, sus propiedades computadas y sus respectivos watches
 
         //Para crear componentes que van hacer bases de otro componente por combeniencia se usa v-nombre_del_componente
-        //A los componentes se les puede pasar contenidos(No solo texto, botones, contenido html, componentes de vue, etc) conocidos como slot
-        //para indentificar los componentes se le agrega :name
-        app.component("v-layout", {
+        //A los componentes se les puede pasar contenidos(No solo texto, botones, contenido html, etc) conocidos como slot
+        app.component("v-header", {
             template:`
                 <header>
-                    <slot name="header"></slot>
+                    <slot></slot>
                 </header>
-                <div>
-                    <slot name="contenido"></slot>
-                </div>
             `
         })
 
