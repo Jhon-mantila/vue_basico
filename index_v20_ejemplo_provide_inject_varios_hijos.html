@@ -26,10 +26,8 @@
             },
             watch:{ // Regla el mismo nombre de la variable que tienes que escuchar
             },
-            provide(){ // este le pasa a todos los componentes       
-                return{
-                    otroTexto: this.text 
-                }
+            provide:{ // este le pasa a todos los componentes 
+                otroTexto: this.data
             },
             template: `
                 <div>
@@ -54,11 +52,7 @@
         });
         // pasar directamente al tercer componente
         app.component("tercer", {
-            inject: {
-                otroTexto:{
-                    from: this.provide
-                }
-            },
+            inject: ["otroTexto"],
 
             template: `<div>{{ otroTexto }}</div>`
         })

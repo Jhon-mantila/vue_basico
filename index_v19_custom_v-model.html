@@ -26,16 +26,13 @@
             },
             watch:{ // Regla el mismo nombre de la variable que tienes que escuchar
             },
-            provide(){ // este le pasa a todos los componentes       
-                return{
-                    otroTexto: this.text 
-                }
-            },
+            //1. pasando solo el for
+            //2. pasado  una varibale del for, se puede pasar json
             template: `
                 <div>
-                    {{ text }}
+                    <p>{{ text }}</p>
+                    <v-input v-model:value="text" />
                 </div>
-                <segundo />
             `
         });
         //Separar por componentes una aplicacion en vue
@@ -45,22 +42,17 @@
         //A los componentes se les puede pasar contenidos(No solo texto, botones, contenido html, componentes de vue, etc) conocidos como slot
         //para indentificar los componentes se le agrega :name
 
-
-        app.component("segundo", {
-            template: `
-                <tercer />
-            `
-
-        });
-        // pasar directamente al tercer componente
-        app.component("tercer", {
-            inject: {
-                otroTexto:{
-                    from: this.provide
+        app.component("v-input",{
+            props:{
+                value:String
+            },
+            methods:{
+                input(e){
+                    console.log(e.target.value);
+                    this.$emit("update:value", e.target.value);
                 }
             },
-
-            template: `<div>{{ otroTexto }}</div>`
+            template: `<input type="text" v-bind:value="value" v-on:input="input" /> `
         })
 
         const vm = app.mount("#app");
