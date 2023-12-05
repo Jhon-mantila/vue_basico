@@ -27,7 +27,7 @@
             watch:{ // Regla el mismo nombre de la variable que tienes que escuchar
             },
             template: `
-                <v-button ref="elemento" :label="text"></v-button>
+
             `
         });
         //Separar por componentes una aplicacion en vue
@@ -36,15 +36,6 @@
         //Para crear componentes que van hacer bases de otro componente por combeniencia se usa v-nombre_del_componente
         //A los componentes se les puede pasar contenidos(No solo texto, botones, contenido html, componentes de vue, etc) conocidos como slot
         //para indentificar los componentes se le agrega :name
-
-        app.component("v-button", {
-            props:["label"],
-            template:`
-                <button>{{ label }}</button>
-                <div>Botn 2</div>
-                <p>Parraffo</p>
-            `
-        })
 
 
         const vm = app.mount("#app");
